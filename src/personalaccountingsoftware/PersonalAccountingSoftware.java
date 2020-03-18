@@ -1,11 +1,14 @@
 package personalaccountingsoftware;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class PersonalAccountingSoftware {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         MyAccount account = null;
         while(true){
             Scanner sc = new Scanner(System.in);
@@ -37,7 +40,8 @@ public class PersonalAccountingSoftware {
                 System.out.print("กรุณากรอกยอดเงิน (หน่วยบาท): ");
                 double bath = sc.nextDouble();
                 System.out.print("กรุณากรอกวันที่ของรายการ : ");
-                String date = sc.next();
+                String dateString = sc.next();
+                Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateString);
                 account.createTransaction(transactionType,name,bath,date);
             }
             else if(menu.equalsIgnoreCase("F")){

@@ -2,6 +2,7 @@ package personalaccountingsoftware;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 public class MyAccount {
 
@@ -12,12 +13,15 @@ public class MyAccount {
     private ArrayList<ExpenseItem> expenseItems = new ArrayList<ExpenseItem>();
 
     public MyAccount(String firstName, String lastName) {
+        Random rand = new Random();
         this.firstName = firstName;
         this.lastName = lastName;
-        this.accountNumber = "1234567890";
+        int first5digits = rand.nextInt(99999+1)+10000;
+        int last5digits = rand.nextInt(99999+1)+10000;
+        this.accountNumber = ""+first5digits+last5digits;
     }
 
-    public void createTransaction(String type, String transactionName, double bath, String date) {
+    public void createTransaction(String type, String transactionName, double bath, Date date) {
         if (type.equals("+")) {
             RecieveItem recieveItem = new RecieveItem(transactionName, bath, date);
             this.recieveItems.add(recieveItem);
@@ -60,7 +64,12 @@ public class MyAccount {
         }
         System.out.println("รายรับทั้งหมด = " + recieveAmount);
         System.out.println("รายจ่ายทั้งหมด = " + expenseAmount);
-        System.out.println("เหลือเงิน / ติดหนี้ =" + (recieveAmount - expenseAmount));
+        if((recieveAmount - expenseAmount)<0){
+           System.out.println("ติดหนี้ = " + (recieveAmount - expenseAmount));
+        }
+        else{
+           System.out.println("เหลือเงิน = " + (recieveAmount - expenseAmount));
+        }
     }
 
     public String toString() {

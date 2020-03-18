@@ -6,9 +6,9 @@ public class ExpenseItem {
     
     private String name;
     private double bath;
-    private String date;
+    private Date date;
     
-    public ExpenseItem(String name,double bath,String date){
+    public ExpenseItem(String name,double bath,Date date){
         this.name = name;
         this.bath = bath;
         this.date = date;
@@ -30,11 +30,11 @@ public class ExpenseItem {
         this.bath = bath;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }

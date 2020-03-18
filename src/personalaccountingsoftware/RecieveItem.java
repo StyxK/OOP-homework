@@ -1,11 +1,13 @@
 package personalaccountingsoftware;
 
+import java.util.Date;
+
 public class RecieveItem {
     private String name;
     private double bath;
-    private String date;
+    private Date date;
     
-    public RecieveItem(String name,double bath,String date){
+    public RecieveItem(String name,double bath,Date date){
         this.name = name;
         this.bath = bath;
         this.date = date;
@@ -27,11 +29,11 @@ public class RecieveItem {
         this.bath = bath;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }
